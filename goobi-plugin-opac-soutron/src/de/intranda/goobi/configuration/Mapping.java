@@ -15,7 +15,7 @@ import lombok.extern.log4j.Log4j;
 @Log4j
 public class Mapping {
 
-    private static final String configurationFile = "/opt/digiverso/goobi/config/config_soutron.xml";
+    private static final String configurationFile = "/opt/digiverso/goobi/config/plugin_opac-soutron.xml";
 
     private static Mapping instance;
     private static XMLConfiguration config;

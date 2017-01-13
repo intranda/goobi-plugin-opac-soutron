@@ -25,7 +25,6 @@ package de.intranda.goobi.plugins;
 
 import net.xeoh.plugins.base.annotations.PluginImplementation;
 
-import java.io.IOException;
 import java.io.StringReader;
 import java.util.List;
 import java.util.Map;
@@ -124,7 +123,7 @@ public class SoutronImport implements IOpacPlugin {
             numberOfHits = 0;
             return null;
         }
-
+        numberOfHits = 1;
         Element element = root.getChild("catalogs_view").getChild("ct");
         String documentType = element.getAttributeValue("name");
         String rulesetType = docstructMap.get(documentType);
@@ -209,8 +208,8 @@ public class SoutronImport implements IOpacPlugin {
     public ConfigOpacDoctype getOpacDocType() {
         ConfigOpacDoctype cod = null;
         try {
-//            ConfigOpac co = ConfigOpac.getInstance();
-            ConfigOpac co = new ConfigOpac();
+            ConfigOpac co = ConfigOpac.getInstance();
+//            ConfigOpac co = new ConfigOpac();
             cod = co.getDoctypeByMapping(this.gattung, this.coc.getTitle());
             if (cod == null) {
 
@@ -218,7 +217,7 @@ public class SoutronImport implements IOpacPlugin {
                 this.gattung = cod.getMappings().get(0);
 
             }
-        } catch (IOException e) {
+        } catch (Exception e) {
             log.error(e);
         }
         return cod;
