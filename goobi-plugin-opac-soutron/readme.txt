@@ -1,5 +1,5 @@
 goobi_opac.xml configuration:
-each document type has to be mapped as a <mapping>:
+each document type has to be mapped as a <mapping> element:
 
         <type isContainedWork="false" isMultiVolume="false" isPeriodical="false" rulesetType="Monograph" tifHeaderType="Monographie" title="monograph">
             <label language="de">Monographie</label>
