@@ -1,0 +1,16 @@
+<config_plugin>
+    <docstructs>
+        <docstruct soutron="Monograph" ruleset="Monograph" />
+
+    </docstructs>
+    <metadata>
+
+        <element xpath="./cat/fs/f[@name='Title']/vs/v[@seq='1']/text()" metadata="TitleDocMain" />
+        <element xpath="./cat/fs/f[@name='CID']/vs/v/text()" metadata="CatalogIDDigital" />
+    </metadata>
+
+    <person>
+        <element xpath="./cat/fs/f[@name='Author']/vs/v/text()" metadata="Author" />
+    </person>
+
+</config_plugin>
