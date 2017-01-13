@@ -1,10 +1,11 @@
 <config_plugin>
     <docstructs>
         <docstruct soutron="Monograph" ruleset="Monograph" />
-
+        <docstruct soutron="Audiovisual" ruleset="Audio" />
+        <docstruct soutron="PhotoCollections" ruleset="Picture" />
     </docstructs>
+    
     <metadata>
-
         <element xpath="./cat/fs/f[@name='Title']/vs/v[@seq='1']/text()" metadata="TitleDocMain" />
         <element xpath="./cat/fs/f[@name='CID']/vs/v/text()" metadata="CatalogIDDigital" />
     </metadata>
