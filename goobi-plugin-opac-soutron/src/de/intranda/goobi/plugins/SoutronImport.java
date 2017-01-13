@@ -25,6 +25,7 @@ package de.intranda.goobi.plugins;
 
 import net.xeoh.plugins.base.annotations.PluginImplementation;
 
+import java.io.IOException;
 import java.io.StringReader;
 import java.util.List;
 import java.util.Map;
@@ -102,28 +103,6 @@ public class SoutronImport implements IOpacPlugin {
 
     public String getDescription() {
         return pluginName;
-    }
-
-    public static void main(String[] args) throws Exception {
-        SoutronImport plugin = new SoutronImport();
-        Prefs prefs = new Prefs();
-        prefs.loadPrefs("/opt/digiverso/goobi/rulesets/gdz.xml");
-
-        ConfigOpacCatalogue coc = new ConfigOpacCatalogue("", "", "http://wiener.soutron.net/Library/WebServices/SoutronAPI.svc/GetCatalogue", "", "",
-                0, "", "", null, "", "", null);
-
-        Fileformat ff = plugin.search("", "61228", coc, prefs);
-        DocStruct ds = ff.getDigitalDocument().getLogicalDocStruct();
-        System.out.println("Type: " + ds.getType().getName());
-
-        System.out.println("### Metadata ###");
-        for (Metadata md : ds.getAllMetadata()) {
-            System.out.println(md.getType().getName() + ": " + md.getValue());
-        }
-        System.out.println("### Person ###");
-        for (Person p : ds.getAllPersons()) {
-            System.out.println(p.getType().getName() + ": " + p.getLastname() + ", " + p.getFirstname());
-        }
     }
 
     @Override
@@ -228,13 +207,18 @@ public class SoutronImport implements IOpacPlugin {
 
     @Override
     public ConfigOpacDoctype getOpacDocType() {
-        ConfigOpac co = ConfigOpac.getInstance();
-        ConfigOpacDoctype cod = co.getDoctypeByMapping(this.gattung, this.coc.getTitle());
-        if (cod == null) {
+        ConfigOpacDoctype cod = null;
+        try {
+            ConfigOpac co = new ConfigOpac();
+            cod = co.getDoctypeByMapping(this.gattung, this.coc.getTitle());
+            if (cod == null) {
 
-            cod = ConfigOpac.getInstance().getAllDoctypes().get(0);
-            this.gattung = cod.getMappings().get(0);
+                cod = co.getAllDoctypes().get(0);
+                this.gattung = cod.getMappings().get(0);
 
+            }
+        } catch (IOException e) {
+            log.error(e);
         }
         return cod;
     }
