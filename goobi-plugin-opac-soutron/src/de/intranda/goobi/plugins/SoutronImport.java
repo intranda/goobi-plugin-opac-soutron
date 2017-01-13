@@ -209,6 +209,7 @@ public class SoutronImport implements IOpacPlugin {
     public ConfigOpacDoctype getOpacDocType() {
         ConfigOpacDoctype cod = null;
         try {
+//            ConfigOpac co = ConfigOpac.getInstance();
             ConfigOpac co = new ConfigOpac();
             cod = co.getDoctypeByMapping(this.gattung, this.coc.getTitle());
             if (cod == null) {
