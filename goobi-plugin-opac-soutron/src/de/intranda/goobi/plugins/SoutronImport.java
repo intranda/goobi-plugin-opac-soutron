@@ -124,8 +124,8 @@ public class SoutronImport implements IOpacPlugin {
             return null;
         }
         numberOfHits = 1;
-        Element element = root.getChild("catalogs_view").getChild("ct");
-        String documentType = element.getAttributeValue("name");
+        Element ct = root.getChild("catalogs_view").getChild("ct");
+        String documentType = ct.getChild("cat").getChild("rt").getAttributeValue("name");
         String rulesetType = docstructMap.get(documentType);
         gattung = rulesetType;
         MetsMods mm = null;
@@ -147,23 +147,24 @@ public class SoutronImport implements IOpacPlugin {
 
             for (String xpath : metadataMap.keySet()) {
                 XPathExpression<Text> expression = xFactory.compile(xpath, Filters.text(), null);
-                List<Text> textList = expression.evaluate(element);
+                List<Text> textList = expression.evaluate(ct);
                 for (Text text : textList) {
                     String value = text.getText();
-                    MetadataType mdt = prefs.getMetadataTypeByName(metadataMap.get(xpath));
+                    String metadataName = metadataMap.get(xpath);
+                    MetadataType mdt = prefs.getMetadataTypeByName(metadataName);
                     try {
                         Metadata md = new Metadata(mdt);
                         md.setValue(value);
                         logical.addMetadata(md);
                     } catch (MetadataTypeNotAllowedException | DocStructHasNoTypeException e) {
-                        log.error("Cannot add metadata " + mdt.getName() + " to docstruct " + logical.getType().getName());
+                        log.error("Cannot add metadata " +metadataName + " to docstruct " + logical.getType().getName());
                     }
                 }
             }
 
             for (String xpath : personMap.keySet()) {
                 XPathExpression<Text> expression = xFactory.compile(xpath, Filters.text(), null);
-                List<Text> textList = expression.evaluate(element);
+                List<Text> textList = expression.evaluate(ct);
                 for (Text text : textList) {
                     String value = text.getText();
                     String firstname = "";
@@ -208,7 +209,7 @@ public class SoutronImport implements IOpacPlugin {
     public ConfigOpacDoctype getOpacDocType() {
         ConfigOpacDoctype cod = null;
         try {
-//            ConfigOpac co = ConfigOpac.getInstance();
+            //            ConfigOpac co = ConfigOpac.getInstance();
             ConfigOpac co = ConfigOpac.getInstance();
             cod = co.getDoctypeByMapping(this.gattung, this.coc.getTitle());
             if (cod == null) {

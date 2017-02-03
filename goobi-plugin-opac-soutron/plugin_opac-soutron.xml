@@ -1,17 +1,43 @@
 <config_plugin>
     <docstructs>
-        <docstruct soutron="Monograph" ruleset="Monograph" />
-        <docstruct soutron="Audiovisual" ruleset="Audio" />
-        <docstruct soutron="PhotoCollections" ruleset="Picture" />
+        <docstruct soutron="Book" ruleset="Monograph" />
+        <docstruct soutron="Photo" ruleset="Photograph" />
+        <docstruct soutron="Unpublished Material" ruleset="Monograph" />
+        <docstruct soutron="Audiovisual Material" ruleset="Audio" />
     </docstructs>
-    
     <metadata>
+
+        <element xpath="./@name" metadata="singleDigCollection" />
         <element xpath="./cat/fs/f[@name='Title']/vs/v[@seq='1']/text()" metadata="TitleDocMain" />
         <element xpath="./cat/fs/f[@name='CID']/vs/v/text()" metadata="CatalogIDDigital" />
+        <element xpath="./cat/fs/f[@name='ISBN']/vs/v/text()" metadata="ISBN" />
+        <element xpath="./cat/fs/f[@name='ISSN']/vs/v/text()" metadata="ISSN" />
+        <element xpath="./cat/fs/f[@name='Notes']/vs/v/text()" metadata="Note" />
+        <element xpath="./cat/fs/f[@name='Sort Year']/vs/v/text()" metadata="CurrentNoSorting" />
+        <element xpath="./cat/fs/f[@name='Publisher']/vs/v/text()" metadata="PublisherName" />
+        <element xpath="./cat/fs/f[@name='Language']/vs/v/text()" metadata="DocLanguage" />
+        <element xpath="./cat/fs/f[@name='Subjects']/vs/v/text()" metadata="Classification" />
+
+        <element xpath="./cat/fs/f[@name='Abstract']/vs/v/text()" metadata="Abstract" />
+        <element xpath="./cat/fs/f[@name='Edition']/vs/v/text()" metadata="EditionStatement" />
+
+        <element xpath="./cat/fs/f[@name='Sort Year']/vs/v/text()" metadata="CurrentNoSorting" />
+
+
+        <element xpath="./cat/fs/f[@name='Date of Publication']/vs/v/text()" metadata="PublicationYear" />
+        <element xpath="./cat/fs/f[@name='Place of Publication']/vs/v/text()" metadata="PlaceOfPublication" />
+        <element xpath="./cat/fs/f[@name='Subjects']/vs/v/text()" metadata="Classification" />
+        <element xpath="./cat/fs/f[@name='Accompanying Material']/vs/v/text()" metadata="Description" />
+	<element xpath="./cat/fs/f[@name='Geographical Name']/vs/v/text()" metadata="GeographicKeyword" />
+ 	<element xpath="./cat/fs/f[@name='Duration']/vs/v/text()" metadata="Duration" />
     </metadata>
 
     <person>
         <element xpath="./cat/fs/f[@name='Author']/vs/v/text()" metadata="Author" />
+        <element xpath="./cat/fs/f[@name='Editor']/vs/v/text()" metadata="Editor" />
+        <element xpath="./cat/fs/f[@name='Illustrator']/vs/v/text()" metadata="Illustrator" />
+        <element xpath="./cat/fs/f[@name='Photographer']/vs/v/text()" metadata="Photographer" />
+        <element xpath="./cat/fs/f[@name='Translator']/vs/v/text()" metadata="Translator" />
     </person>
 
 </config_plugin>
