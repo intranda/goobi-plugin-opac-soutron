@@ -21,6 +21,11 @@ Einige Beispiele, die Jessica Green einmal herausgesucht hatte:
 	CID 23428 (CD) - http://wiener.soutron.net/Portal/Default/en-GB/RecordView/Index/65696
 	CID 65881 (E-resource) - http://wiener.soutron.net/Portal/Default/en-GB/RecordView/Index/65881
 	
+Ein Testimony Beispiel:
+
+	https://wiener.soutron.net/Portal/Default/en-GB/RecordView/Index/93816
+	http://wiener.soutron.net/Library/WebServices/SoutronAPI.svc/GetCatalogue?id=93816
+	
 Suchanfrage:
 
 	http://wiener.soutron.net/Library/WebServices/SoutronAPI.svc/searchcatalogues?q=law&ctrt=Monograph;Serial;AudioVisual;PhotoCollections
@@ -39,7 +44,7 @@ Für den Einsatz des Plugins muss die Opac-Konfiguration geändert werden innerh
 Der Katalog selbst wird wie folgt definiert::
 
 	<catalogue title="Wiener">
-		<config description="Wiener Library" address="http://wiener.soutron.net/Library/WebServices/SoutronAPI.svc/GetCatalogue"
+		<config description="Wiener Library" address="https://wiener.soutron.net/Library/WebServices/SoutronAPI.svc/GetCatalogue"
 		port="80" database="2.1" iktlist="IKTLIST-GBV.xml" ucnf="XPNOFF=1" opacType="SoutronImport" />
 	</catalogue>
     
