@@ -53,6 +53,6 @@ Der Katalog selbst wird wie folgt definiert::
 
 Sämtliche Mapping-Konfiguration findet in der folgenden Datei statt:
  
-	/opt/digiverso/goobi/config/config_soutron.xml
+	/opt/digiverso/goobi/config/plugin_SoutronImport.xml
     
     
