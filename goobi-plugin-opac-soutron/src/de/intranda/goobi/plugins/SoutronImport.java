@@ -108,7 +108,7 @@ public class SoutronImport implements IOpacPlugin {
     public Fileformat search(String inSuchfeld, String inSuchbegriff, ConfigOpacCatalogue coc, Prefs prefs) throws Exception {
         this.coc = coc;
         Client client = ClientBuilder.newClient();
-        WebTarget url = client.target(coc.getAddress()).queryParam("id", inSuchbegriff);
+        WebTarget url = client.target(coc.getAddress()).queryParam("id", inSuchbegriff).queryParam("userid", "4841");
 
         Response response = url.request().get();
         if (response.getStatus() != 200) {
