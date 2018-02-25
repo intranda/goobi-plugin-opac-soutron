@@ -1,9 +1,13 @@
 <config_plugin>
     <docstructs>
-        <docstruct soutron="Book" ruleset="Monograph" />
-        <docstruct soutron="Photo" ruleset="Photograph" />
-        <docstruct soutron="Unpublished Material" ruleset="Monograph" />
-        <docstruct soutron="Audiovisual Material" ruleset="Audio" />
+        <!--
+        -->
+        <docstruct soutron="Item" ruleset="Item" />
+        <docstruct soutron="File" ruleset="Item" />
+        <docstruct soutron="Book" ruleset="Item" />
+        <docstruct soutron="Photo" ruleset="Item" />
+        <docstruct soutron="Unpublished Material" ruleset="Item" />
+        <docstruct soutron="Audiovisual Material" ruleset="Item" />
     </docstructs>
     <metadata>
 
@@ -11,25 +15,25 @@
         <element xpath="./cat/fs/f[@name='Title']/vs/v[@seq='1']/text()" metadata="TitleDocMain" />
         <element xpath="./cat/fs/f[@name='CID']/vs/v/text()" metadata="CatalogIDDigital" />
         <element xpath="./cat/fs/f[@name='ISBN']/vs/v/text()" metadata="ISBN" />
-        <element xpath="./cat/fs/f[@name='ISSN']/vs/v/text()" metadata="ISSN" />
         <element xpath="./cat/fs/f[@name='Notes']/vs/v/text()" metadata="Note" />
-        <element xpath="./cat/fs/f[@name='Sort Year']/vs/v/text()" metadata="CurrentNoSorting" />
         <element xpath="./cat/fs/f[@name='Publisher']/vs/v/text()" metadata="PublisherName" />
         <element xpath="./cat/fs/f[@name='Language']/vs/v/text()" metadata="DocLanguage" />
-        <element xpath="./cat/fs/f[@name='Subjects']/vs/v/text()" metadata="Classification" />
-
+        <element xpath="./cat/fs/f[@name='Subjects']/vs/v/text()" metadata="Subject" />
         <element xpath="./cat/fs/f[@name='Abstract']/vs/v/text()" metadata="Abstract" />
-        <element xpath="./cat/fs/f[@name='Edition']/vs/v/text()" metadata="EditionStatement" />
-
         <element xpath="./cat/fs/f[@name='Sort Year']/vs/v/text()" metadata="CurrentNoSorting" />
-
-
         <element xpath="./cat/fs/f[@name='Date of Publication']/vs/v/text()" metadata="PublicationYear" />
+        <element xpath="./cat/fs/f[@name='Coverage Dates']/vs/v/text()" metadata="CoverageDates" />
+        <element xpath="./cat/fs/f[@name='Date notes']/vs/v/text()" metadata="DateNotes" />
         <element xpath="./cat/fs/f[@name='Place of Publication']/vs/v/text()" metadata="PlaceOfPublication" />
-        <element xpath="./cat/fs/f[@name='Subjects']/vs/v/text()" metadata="Classification" />
         <element xpath="./cat/fs/f[@name='Accompanying Material']/vs/v/text()" metadata="Description" />
-	<element xpath="./cat/fs/f[@name='Geographical Name']/vs/v/text()" metadata="GeographicKeyword" />
- 	<element xpath="./cat/fs/f[@name='Duration']/vs/v/text()" metadata="Duration" />
+        <element xpath="./cat/fs/f[@name='Geographical Name']/vs/v/text()" metadata="SubjectGeographic" />
+ 	    <element xpath="./cat/fs/f[@name='Duration']/vs/v/text()" metadata="Note" />
+        <element xpath="./cat/fs/f[@name='Reference Number']/vs/v/text()" metadata="shelfmarksource" />
+        <element xpath="./cat/fs/f[@name='Scope/Content']/vs/v/text()" metadata="Abstract" />
+        <element xpath="./cat/fs/f[@name='Extent']/vs/v/text()" metadata="physicalDescriptionExtent" />
+        <element xpath="./cat/fs/f[@name='Credit Line']/vs/v/text()" metadata="CreditLine" />
+        <element xpath="./cat/fs/f[@name='Personal Name Keyword']/vs/v/text()" metadata="SubjectPerson" />
+        <element xpath="./cat/fs/f[@name='Institutional Keyword']/vs/v/text()" metadata="SubjectCorporate" />
     </metadata>
 
     <person>
