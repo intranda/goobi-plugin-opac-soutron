@@ -2,7 +2,7 @@
 
 <!-- ADJUST PROJECT NAME, FILENAME AND INCLUDED CLASSES FOR JENKINS IF YOU COPY THIS FILE TO A NEW PROJECT-->
 
-<project name="HAAB Opac Plugin" basedir="." default="deploy">
+<project name="Soutron Opac Plugin" basedir="." default="deploy">
 
 	<!-- ================================= 
 	        properties             
