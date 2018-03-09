@@ -45,7 +45,7 @@ Der Katalog selbst wird wie folgt definiert::
 
 	<catalogue title="Wiener">
 		<config description="Wiener Library" address="https://wiener.soutron.net/Library/WebServices/SoutronAPI.svc/GetCatalogue"
-		port="80" database="2.1" iktlist="IKTLIST-GBV.xml" ucnf="XPNOFF=1" opacType="SoutronImport" />
+		port="80" database="2.1" iktlist="IKTLIST-GBV.xml" ucnf="XPNOFF=1" opacType="plugin_intranda_opac_soutron" />
 	</catalogue>
     
 
