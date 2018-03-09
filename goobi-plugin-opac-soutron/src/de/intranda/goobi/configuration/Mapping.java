@@ -34,7 +34,7 @@ public class Mapping {
 	}
 
 	private Mapping() {
-		String configFile = "plugin_SoutronImport.xml";
+		String configFile = "plugin_intranda_opac_soutron.xml";
 		try {
 			config = new XMLConfiguration(new Helper().getGoobiConfigDirectory() + configFile);
 		} catch (ConfigurationException e) {

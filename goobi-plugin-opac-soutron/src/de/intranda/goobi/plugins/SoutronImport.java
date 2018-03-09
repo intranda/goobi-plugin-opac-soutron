@@ -68,7 +68,7 @@ import lombok.extern.log4j.Log4j;
 @Log4j
 public class SoutronImport implements IOpacPlugin {
 
-    private static final String pluginName = "SoutronImport";
+    private static final String pluginName = "plugin_intranda_opac_soutron";
 
     private int numberOfHits = 0;
 
@@ -81,13 +81,9 @@ public class SoutronImport implements IOpacPlugin {
     private ConfigOpacCatalogue coc;
 
     public SoutronImport() {
-
         docstructMap = Mapping.getInstance().getConfiguredDocstructs();
-
         metadataMap = Mapping.getInstance().getConfiguredMetadataMapping();
-
         personMap = Mapping.getInstance().getConfiguredPersonMapping();
-
     }
 
     @Override
