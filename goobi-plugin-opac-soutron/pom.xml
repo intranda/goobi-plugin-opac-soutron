@@ -90,18 +90,25 @@
         </plugin></plugins>
 	</build>
 	
-	<dependencies>
-		<dependency>
-			<groupId>de.intranda.goobi.workflow</groupId>
-			<artifactId>goobi-core-jar</artifactId>
-			<version>3.0</version>
-		</dependency>
-		<!-- https://mvnrepository.com/artifact/junit/junit -->
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.12</version>
-			<scope>test</scope>
-		</dependency>
-	</dependencies>
+	    <dependencies>
+        <dependency>
+            <groupId>de.intranda.goobi.workflow</groupId>
+            <artifactId>goobi-core-jar</artifactId>
+            <version>3.0.10</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/junit/junit -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
+        </dependency>
+                <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.4</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
 <scm><url>scm:git:ssh://git@gitea.intranda.com:goobi-workflow/goobi-plugin-opac-soutron.git</url><connection>scm:git:ssh://git@gitea.intranda.com:goobi-workflow/goobi-plugin-opac-soutron.git</connection></scm></project>
