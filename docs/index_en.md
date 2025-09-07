@@ -3,6 +3,10 @@ title: Soutron Import
 identifier: intranda_opac_soutron
 published: true
 description: OPAC Plugin for data transfer from Soutron data sets
+keywords:
+    - Goobi workflow
+    - Plugin
+    - Opac Plugin
 ---
 ## Introduction
 This documentation describes the installation, configuration and use of the plugin. This plugin can be used to retrieve data from a Soutron system and transfer it to Goobi. Access to the Soutron catalogue must be guaranteed for this purpose.
