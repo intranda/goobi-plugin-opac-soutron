@@ -23,16 +23,9 @@
 
 package de.intranda.goobi.plugins;
 
-import net.xeoh.plugins.base.annotations.PluginImplementation;
-
 import java.io.StringReader;
 import java.util.List;
 import java.util.Map;
-
-import jakarta.ws.rs.client.Client;
-import jakarta.ws.rs.client.ClientBuilder;
-import jakarta.ws.rs.client.WebTarget;
-import jakarta.ws.rs.core.Response;
 
 import org.goobi.production.enums.PluginType;
 import org.goobi.production.plugin.interfaces.IOpacPlugin;
@@ -44,6 +37,17 @@ import org.jdom2.input.SAXBuilder;
 import org.jdom2.xpath.XPathExpression;
 import org.jdom2.xpath.XPathFactory;
 
+import de.intranda.goobi.configuration.Mapping;
+import de.sub.goobi.helper.exceptions.ImportPluginException;
+import de.unigoettingen.sub.search.opac.ConfigOpac;
+import de.unigoettingen.sub.search.opac.ConfigOpacCatalogue;
+import de.unigoettingen.sub.search.opac.ConfigOpacDoctype;
+import jakarta.ws.rs.client.Client;
+import jakarta.ws.rs.client.ClientBuilder;
+import jakarta.ws.rs.client.WebTarget;
+import jakarta.ws.rs.core.Response;
+import lombok.extern.log4j.Log4j;
+import net.xeoh.plugins.base.annotations.PluginImplementation;
 import ugh.dl.DigitalDocument;
 import ugh.dl.DocStruct;
 import ugh.dl.DocStructType;
@@ -57,12 +61,6 @@ import ugh.exceptions.MetadataTypeNotAllowedException;
 import ugh.exceptions.PreferencesException;
 import ugh.exceptions.TypeNotAllowedForParentException;
 import ugh.fileformats.mets.MetsMods;
-import de.intranda.goobi.configuration.Mapping;
-import de.sub.goobi.helper.exceptions.ImportPluginException;
-import de.unigoettingen.sub.search.opac.ConfigOpac;
-import de.unigoettingen.sub.search.opac.ConfigOpacCatalogue;
-import de.unigoettingen.sub.search.opac.ConfigOpacDoctype;
-import lombok.extern.log4j.Log4j;
 
 @PluginImplementation
 @Log4j
@@ -113,9 +111,12 @@ public class SoutronImport implements IOpacPlugin {
         }
         String s = response.readEntity(String.class);
         SAXBuilder sb = new SAXBuilder();
+        sb.setFeature("http://apache.org/xml/features/disallow-doctype-decl", true);
+        sb.setFeature("http://xml.org/sax/features/external-general-entities", false);
+        sb.setFeature("http://xml.org/sax/features/external-parameter-entities", false);
         Document doc = sb.build(new StringReader(s));
         Element root = doc.getRootElement();
-        if (!root.getName().equals("soutron")) {
+        if (!"soutron".equals(root.getName())) {
             numberOfHits = 0;
             return null;
         }
@@ -153,7 +154,7 @@ public class SoutronImport implements IOpacPlugin {
                         md.setValue(value);
                         logical.addMetadata(md);
                     } catch (MetadataTypeNotAllowedException | DocStructHasNoTypeException e) {
-                        log.error("Cannot add metadata " +metadataName + " to docstruct " + logical.getType().getName());
+                        log.error("Cannot add metadata " + metadataName + " to docstruct " + logical.getType().getName());
                     }
                 }
             }

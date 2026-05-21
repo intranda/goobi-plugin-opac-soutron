@@ -1,8 +1,15 @@
-<project name="goobi-plugin-opac-soutron" default="devbuild">
-	<target name="devbuild">
-		<exec executable="mvn">
-			<arg value="package"/>
-		</exec>
-		<copy file="target/plugin_intranda_opac_soutron.jar" todir="/opt/digiverso/goobi/plugins/opac/"/>
-	</target>
+<?xml version="1.0"?>
+<project default="devbuild">
+
+    <!-- Simply set the name of the plugin here, e.g. "fileUpload" or "file_upload") instead of "sample" -->
+    <property name="name" value="soutron" />
+
+    <!-- Use this task to let ant copy the compiled jar files to the target folders for development  -->
+    <target name="devbuild">
+        <exec executable="mvn">
+            <arg value="package"/>
+        </exec>
+        <copy file="module-base/target/plugin-opac-${name}-base.jar" todir="/opt/digiverso/goobi/plugins/opac/" overwrite="true"/>
+    </target>
+
 </project>
